@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function App() {
+  const [data, setData] = useState([]);
+  useEffect(async () => {
+    const result = await axios("http://localhost:4000/getposts");
+
+    setData(result.data);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {data.map((d) => (
+        <div>
+          <Link to={"/detail/" + d.id}>
+            {" "}
+            <h1>{d.title}</h1>
+          </Link>
+          <p>{d.body}</p>
+        </div>
+      ))}
     </div>
   );
 }
