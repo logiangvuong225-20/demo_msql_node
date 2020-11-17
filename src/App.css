@@ -28,3 +28,11 @@ button {
 
   font-size: 1em;
 }
+.update {
+  font-size: 1em;
+}
+.commentF {
+  margin: 10px;
+  position: absolute;
+  top: 400px;
+}

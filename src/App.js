@@ -14,6 +14,7 @@ function App() {
 
     setData(result.data);
   }, []);
+
   const submitReview = () => {
     axios.post("http://localhost:4000/insert", { title: title, des: des });
 
@@ -26,6 +27,9 @@ function App() {
     } else {
       return;
     }
+  };
+  const updateData = (id) => {
+    axios.put(`http://localhost:4000/update/${id}`, { title: title, des: des });
   };
 
   return (
@@ -66,6 +70,25 @@ function App() {
               <h3>{d.title}</h3>
             </Link>
             <p>{d.des}</p>
+            <br></br>
+            <input
+              type="text"
+              placeholder="title"
+              name="name"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            ></input>{" "}
+            <br />
+            <br />
+            <input
+              type="text"
+              placeholder="description"
+              onChange={(e) => {
+                setDes(e.target.value);
+              }}
+            ></input>
+            <br />
             <button
               className="deleteData"
               onClick={() => {
@@ -75,8 +98,14 @@ function App() {
               {" "}
               Delete
             </button>
-
-            <button>Update</button>
+            <button
+              className="update"
+              onClick={() => {
+                updateData(d.id);
+              }}
+            >
+              Update
+            </button>
           </div>
         ))}
       </div>
