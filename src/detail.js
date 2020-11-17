@@ -10,13 +10,12 @@ const Detail = () => {
     const result = await axios("http://localhost:4000/getpost/" + id);
 
     setData(result.data);
-  });
-  console.log(data);
+  }, []);
 
   return (
     <div>
-      <h1> {t}</h1>
-      <p>{b}</p>
+      <h1> {data.title}</h1>
+      <p>{data.des}</p>
     </div>
   );
 };

@@ -1,3 +1,30 @@
 .App {
   text-align: center;
 }
+input {
+  width: 400px;
+  height: 60px;
+  font-size: 1.5em;
+}
+.formAdd {
+  text-align: center;
+  font-size: 1.5em;
+}
+button {
+  width: 100px;
+  height: 60px;
+  font-size: 0.5em;
+  margin: 5px;
+}
+.all-item {
+  text-align: center;
+  border: 1px solid #000;
+  width: 50%;
+  position: absolute;
+  left: 25%;
+}
+.deleteData {
+  display: inline;
+
+  font-size: 1em;
+}
