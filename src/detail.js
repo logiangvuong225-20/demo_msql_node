@@ -18,14 +18,21 @@ const Detail = () => {
 
     setComment(result.data);
   }, []);
+  console.log(comment);
 
   const sendComment = (id) => {
     axios.post(`http://localhost:4000/addcomment/${id}`, {
       commentNew: commentNew,
     });
-
-    commentNew([...data, { commentNew: commentNew }]);
   };
+  // const deleteData = (id) => {
+  //   var answer = window.confirm("Ban co chac muon xoa?");
+  //   if (answer) {
+  //     axios.delete(`http://localhost:4000/deletecomment/${id}`);
+  //   } else {
+  //     return;
+  //   }
+  // };
   return (
     <div>
       <div></div>
@@ -54,7 +61,20 @@ const Detail = () => {
 
       <div className="Comment">
         {comment.map((item) => (
-          <p> {item.cmt}</p>
+          <p>
+            {" "}
+            {item.id}
+            {item.cmt}{" "}
+            {/* <button
+              className="deleteData"
+              onClick={() => {
+                deleteData(item.id);
+              }}
+            >
+              {" "}
+              Delete
+            </button> */}
+          </p>
         ))}
       </div>
     </div>
